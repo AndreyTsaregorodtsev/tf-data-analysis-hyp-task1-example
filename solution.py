@@ -10,7 +10,7 @@ def solution(x_success: int,
              y_cnt: int) -> bool:
     p1 = x_success/x_cnt
     p2 = y_success/y_cnt
-    if(p2-p1>0.09):
+    if(p1-p2>0.09):
       return True
     else:
       return False
