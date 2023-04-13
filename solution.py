@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-
+from scipy.stats import norm
 
 chat_id = 297386717 # Ваш chat ID, не меняйте название переменной
 
@@ -8,9 +8,9 @@ def solution(x_success: int,
              x_cnt: int, 
              y_success: int, 
              y_cnt: int) -> bool:
-    p1 = x_success/x_cnt
-    p2 = y_success/y_cnt
-    if(np.abs(p1-p2)<0.09 and p1!=p2):
-      return True
-    else:
-      return False
+    a1 = x_success/x_cnt
+    a2 = y_success/y_cnt
+    d = np.sqrt((a1 * (1 - a1) / x_cnt) + (a2 * (1-a2) / y_cnt))
+    z_ = (a2-a1)/d
+    decision = z_ > norm.ppf(1-0.09)
+    return decision
