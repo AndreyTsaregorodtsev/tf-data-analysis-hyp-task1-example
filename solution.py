@@ -11,6 +11,6 @@ def solution(x_success: int,
     a1 = x_success/x_cnt
     a2 = y_success/y_cnt
     d = np.sqrt((a1 * (1 - a1) / x_cnt) + (a2 * (1-a2) / y_cnt))
-    z_ = (a2-a1)/d
-    decision = z_ > norm.ppf(1-0.09)
-    return decision
+    z = (a2-a1)/d
+    dec = z > norm.ppf(1-0.09)
+    return dec
